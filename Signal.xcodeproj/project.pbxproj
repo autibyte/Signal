@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		148A9477173C89C500601640 /* SGLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 148A9476173C89C500601640 /* SGLoginViewController.m */; };
 		149F6107173C48A1001E74C9 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 149F6106173C48A1001E74C9 /* UIKit.framework */; };
 		149F6109173C48A1001E74C9 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 149F6108173C48A1001E74C9 /* Foundation.framework */; };
 		149F610B173C48A1001E74C9 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 149F610A173C48A1001E74C9 /* CoreGraphics.framework */; };
@@ -16,11 +17,16 @@
 		149F6119173C48A1001E74C9 /* SGAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 149F6118173C48A1001E74C9 /* SGAppDelegate.m */; };
 		149F611B173C48A1001E74C9 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 149F611A173C48A1001E74C9 /* Default.png */; };
 		149F611D173C48A1001E74C9 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 149F611C173C48A1001E74C9 /* Default@2x.png */; };
-		149F611F173C48A1001E74C9 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 149F611E173C48A1001E74C9 /* Default-568h@2x.png */; };
 		149F6122173C48A1001E74C9 /* Signal.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 149F6120173C48A1001E74C9 /* Signal.xcdatamodeld */; };
+		149F6133173C4C24001E74C9 /* Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 149F6132173C4C24001E74C9 /* Storyboard.storyboard */; };
+		149F6137173C7C55001E74C9 /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 149F6136173C7C55001E74C9 /* Icon@2x.png */; };
+		149F6139173C7F8A001E74C9 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 149F6138173C7F8A001E74C9 /* Default-568h@2x.png */; };
+		149F613D173C828F001E74C9 /* signal-header@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 149F613C173C828F001E74C9 /* signal-header@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		148A9475173C89C500601640 /* SGLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGLoginViewController.h; sourceTree = "<group>"; };
+		148A9476173C89C500601640 /* SGLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SGLoginViewController.m; sourceTree = "<group>"; };
 		149F6103173C48A1001E74C9 /* Signal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Signal.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		149F6106173C48A1001E74C9 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		149F6108173C48A1001E74C9 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -34,8 +40,11 @@
 		149F6118173C48A1001E74C9 /* SGAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SGAppDelegate.m; sourceTree = "<group>"; };
 		149F611A173C48A1001E74C9 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		149F611C173C48A1001E74C9 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
-		149F611E173C48A1001E74C9 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		149F6121173C48A1001E74C9 /* Signal.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Signal.xcdatamodel; sourceTree = "<group>"; };
+		149F6132173C4C24001E74C9 /* Storyboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Storyboard.storyboard; sourceTree = "<group>"; };
+		149F6136173C7C55001E74C9 /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
+		149F6138173C7F8A001E74C9 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		149F613C173C828F001E74C9 /* signal-header@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "signal-header@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,7 +95,9 @@
 			children = (
 				149F6117173C48A1001E74C9 /* SGAppDelegate.h */,
 				149F6118173C48A1001E74C9 /* SGAppDelegate.m */,
-				149F6120173C48A1001E74C9 /* Signal.xcdatamodeld */,
+				149F6128173C48B9001E74C9 /* VCs */,
+				149F612C173C49D8001E74C9 /* Graphics */,
+				149F6129173C48BE001E74C9 /* Data */,
 				149F610F173C48A1001E74C9 /* Supporting Files */,
 			);
 			path = Signal;
@@ -99,11 +110,46 @@
 				149F6111173C48A1001E74C9 /* InfoPlist.strings */,
 				149F6114173C48A1001E74C9 /* main.m */,
 				149F6116173C48A1001E74C9 /* Signal-Prefix.pch */,
-				149F611A173C48A1001E74C9 /* Default.png */,
-				149F611C173C48A1001E74C9 /* Default@2x.png */,
-				149F611E173C48A1001E74C9 /* Default-568h@2x.png */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		149F6128173C48B9001E74C9 /* VCs */ = {
+			isa = PBXGroup;
+			children = (
+				148A9475173C89C500601640 /* SGLoginViewController.h */,
+				148A9476173C89C500601640 /* SGLoginViewController.m */,
+			);
+			name = VCs;
+			sourceTree = "<group>";
+		};
+		149F6129173C48BE001E74C9 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				149F6120173C48A1001E74C9 /* Signal.xcdatamodeld */,
+			);
+			name = Data;
+			sourceTree = "<group>";
+		};
+		149F612C173C49D8001E74C9 /* Graphics */ = {
+			isa = PBXGroup;
+			children = (
+				149F612D173C49E5001E74C9 /* required */,
+				149F6132173C4C24001E74C9 /* Storyboard.storyboard */,
+			);
+			name = Graphics;
+			sourceTree = "<group>";
+		};
+		149F612D173C49E5001E74C9 /* required */ = {
+			isa = PBXGroup;
+			children = (
+				149F613C173C828F001E74C9 /* signal-header@2x.png */,
+				149F6136173C7C55001E74C9 /* Icon@2x.png */,
+				149F611A173C48A1001E74C9 /* Default.png */,
+				149F611C173C48A1001E74C9 /* Default@2x.png */,
+				149F6138173C7F8A001E74C9 /* Default-568h@2x.png */,
+			);
+			name = required;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -161,7 +207,10 @@
 				149F6113173C48A1001E74C9 /* InfoPlist.strings in Resources */,
 				149F611B173C48A1001E74C9 /* Default.png in Resources */,
 				149F611D173C48A1001E74C9 /* Default@2x.png in Resources */,
-				149F611F173C48A1001E74C9 /* Default-568h@2x.png in Resources */,
+				149F6133173C4C24001E74C9 /* Storyboard.storyboard in Resources */,
+				149F6137173C7C55001E74C9 /* Icon@2x.png in Resources */,
+				149F6139173C7F8A001E74C9 /* Default-568h@2x.png in Resources */,
+				149F613D173C828F001E74C9 /* signal-header@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -175,6 +224,7 @@
 				149F6115173C48A1001E74C9 /* main.m in Sources */,
 				149F6119173C48A1001E74C9 /* SGAppDelegate.m in Sources */,
 				149F6122173C48A1001E74C9 /* Signal.xcdatamodeld in Sources */,
+				148A9477173C89C500601640 /* SGLoginViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -289,6 +339,7 @@
 				149F6127173C48A1001E74C9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 

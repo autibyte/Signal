@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="3084" systemVersion="12D78" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="AOX-ge-il1">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="2083"/>
+    </dependencies>
+    <scenes>
+        <!--Login View Controller-->
+        <scene sceneID="6yB-99-vUK">
+            <objects>
+                <tableViewController storyboardIdentifier="login_view" id="AOX-ge-il1" customClass="SGLoginViewController" sceneMemberID="viewController">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" dataMode="static" style="grouped" separatorStyle="singleLineEtched" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="nVi-Zh-C6C">
+                        <rect key="frame" x="0.0" y="20" width="320" height="548"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="0.98431372549019602" green="0.98431372549019602" blue="0.98431372549019602" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="separatorColor" red="0.80000000000000004" green="0.80000000000000004" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
+                        <view key="tableHeaderView" contentMode="center" id="zV9-Hi-Rxd" customClass="UIControl">
+                            <rect key="frame" x="0.0" y="0.0" width="320" height="220"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <subviews>
+                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" image="signal-header@2x.png" translatesAutoresizingMaskIntoConstraints="NO" id="yMo-Yx-D1P">
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="143" id="VRC-MG-LeH"/>
+                                    </constraints>
+                                </imageView>
+                            </subviews>
+                            <color key="backgroundColor" red="0.98431372549019602" green="0.98431372549019602" blue="0.98431372549019602" alpha="1" colorSpace="calibratedRGB"/>
+                            <constraints>
+                                <constraint firstItem="yMo-Yx-D1P" firstAttribute="trailing" secondItem="zV9-Hi-Rxd" secondAttribute="trailing" type="default" id="XtP-tv-L6X"/>
+                                <constraint firstItem="yMo-Yx-D1P" firstAttribute="leading" secondItem="zV9-Hi-Rxd" secondAttribute="leading" type="default" id="eG5-DO-HJp"/>
+                                <constraint firstItem="yMo-Yx-D1P" firstAttribute="bottom" secondItem="zV9-Hi-Rxd" secondAttribute="bottom" type="default" id="ukz-5v-x09"/>
+                            </constraints>
+                            <connections>
+                                <action selector="headerTouched:" destination="AOX-ge-il1" eventType="touchUpInside" id="9sX-U3-JSH"/>
+                            </connections>
+                        </view>
+                        <label key="tableFooterView" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="© 2013 Signal" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="j5z-gc-vdJ">
+                            <rect key="frame" x="0.0" y="440" width="320" height="44"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <fontDescription key="fontDescription" name="AvenirNext-UltraLight" family="Avenir Next" pointSize="14"/>
+                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <sections>
+                            <tableViewSection id="MV7-K5-lfl">
+                                <cells>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="vPB-aS-Sd2">
+                                        <rect key="frame" x="0.0" y="230" width="320" height="45"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="10" y="1" width="300" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Tag or Email" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zGi-Xg-tOp">
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="277" id="1ha-GV-vfg"/>
+                                                        <constraint firstAttribute="height" constant="43" id="ZYt-dp-PiD"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="16"/>
+                                                    <textInputTraits key="textInputTraits" autocorrectionType="no" returnKeyType="next" enablesReturnKeyAutomatically="YES"/>
+                                                    <connections>
+                                                        <outlet property="delegate" destination="AOX-ge-il1" id="Hg8-Df-afY"/>
+                                                    </connections>
+                                                </textField>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                        <constraints>
+                                            <constraint firstItem="zGi-Xg-tOp" firstAttribute="centerX" secondItem="vPB-aS-Sd2" secondAttribute="centerX" type="default" id="JMY-Yl-vn6"/>
+                                            <constraint firstItem="zGi-Xg-tOp" firstAttribute="top" secondItem="vPB-aS-Sd2" secondAttribute="top" constant="1" id="i78-ZX-T7m"/>
+                                        </constraints>
+                                    </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="lj9-p4-s1s">
+                                        <rect key="frame" x="0.0" y="275" width="320" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="10" y="0.0" width="300" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Aem-R6-6lu">
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="277" id="7My-OZ-Odz"/>
+                                                        <constraint firstAttribute="height" constant="43" id="e0I-dC-13w"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="16"/>
+                                                    <textInputTraits key="textInputTraits" autocorrectionType="no" returnKeyType="go" enablesReturnKeyAutomatically="YES" secureTextEntry="YES"/>
+                                                    <connections>
+                                                        <outlet property="delegate" destination="AOX-ge-il1" id="pCt-2a-p4P"/>
+                                                    </connections>
+                                                </textField>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                        <constraints>
+                                            <constraint firstItem="Aem-R6-6lu" firstAttribute="top" secondItem="lj9-p4-s1s" secondAttribute="top" type="default" id="7Qm-Yx-C2E"/>
+                                            <constraint firstItem="Aem-R6-6lu" firstAttribute="centerX" secondItem="lj9-p4-s1s" secondAttribute="centerX" type="default" id="cX0-7z-sfJ"/>
+                                        </constraints>
+                                    </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="gray" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="1Wc-eZ-yiY">
+                                        <rect key="frame" x="0.0" y="319" width="320" height="45"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="10" y="0.0" width="280" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Login" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kKS-PG-vEs">
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="28" id="WzM-vc-qbg"/>
+                                                        <constraint firstAttribute="width" constant="53" id="r6N-Io-2e2"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="16"/>
+                                                    <color key="textColor" red="0.0" green="0.25098040699958801" blue="0.50196081399917603" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                </label>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                        <constraints>
+                                            <constraint firstItem="kKS-PG-vEs" firstAttribute="centerY" secondItem="1Wc-eZ-yiY" secondAttribute="centerY" type="default" id="bjS-LJ-Hyq"/>
+                                            <constraint firstItem="kKS-PG-vEs" firstAttribute="centerX" secondItem="1Wc-eZ-yiY" secondAttribute="centerX" type="default" id="gJW-mQ-QkS"/>
+                                        </constraints>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                            <tableViewSection id="HNQ-Od-gGF">
+                                <cells>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="gray" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="S4h-gl-SjB">
+                                        <rect key="frame" x="0.0" y="384" width="320" height="46"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="10" y="1" width="300" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="New? Create an account!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DvG-Qv-WrF">
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="278" id="89G-ek-pe4"/>
+                                                        <constraint firstAttribute="height" constant="28" id="c9I-Tm-t1C"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="16"/>
+                                                    <color key="textColor" red="0.0" green="0.25098040700000002" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                </label>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                        <constraints>
+                                            <constraint firstItem="DvG-Qv-WrF" firstAttribute="centerX" secondItem="S4h-gl-SjB" secondAttribute="centerX" type="default" id="3fC-ZQ-4ng"/>
+                                            <constraint firstItem="DvG-Qv-WrF" firstAttribute="centerY" secondItem="S4h-gl-SjB" secondAttribute="centerY" type="default" id="uBi-Jj-Vlz"/>
+                                        </constraints>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                        </sections>
+                        <connections>
+                            <outlet property="dataSource" destination="AOX-ge-il1" id="shv-hj-KaI"/>
+                            <outlet property="delegate" destination="AOX-ge-il1" id="eQv-Gz-0D5"/>
+                        </connections>
+                    </tableView>
+                    <connections>
+                        <outlet property="headerImageView" destination="yMo-Yx-D1P" id="Wdw-ux-UWt"/>
+                        <outlet property="headerView" destination="zV9-Hi-Rxd" id="9Du-sw-4Aa"/>
+                        <outlet property="passwordField" destination="Aem-R6-6lu" id="YTr-Pe-fOF"/>
+                        <outlet property="tagOrEmailField" destination="zGi-Xg-tOp" id="rxX-OZ-Lfo"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0DX-fF-nCh" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-89" y="-253"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="signal-header@2x.png" width="640" height="300"/>
+    </resources>
+    <classes>
+        <class className="NSLayoutConstraint" superclassName="NSObject">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
+        </class>
+        <class className="SGLoginViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SGLoginViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="headerTouched:"/>
+                <relationship kind="outlet" name="headerImageView" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="headerView" candidateClass="UIControl"/>
+                <relationship kind="outlet" name="passwordField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="tagOrEmailField" candidateClass="UITextField"/>
+            </relationships>
+        </class>
+    </classes>
+    <simulatedMetricsContainer key="defaultSimulatedMetrics">
+        <simulatedStatusBarMetrics key="statusBar"/>
+        <simulatedOrientationMetrics key="orientation"/>
+        <simulatedScreenMetrics key="destination" type="retina4"/>
+    </simulatedMetricsContainer>
+</document>
