@@ -104,7 +104,7 @@
     __block NSString* highlight_element = @"userstring";
     
     /* user id returned from API */
-    __block NSString* user_id = nil;
+    __block NSString* user_id = @"0";
     
     dispatch_async(SGASYNC, ^{
         
@@ -113,15 +113,11 @@
         NSDictionary* params = [NSDictionary dictionaryWithObjectsAndKeys:userstring, @"userstring", password, @"password", nil];
         NSDictionary* login = [SGAPI call:@"auth" withDictParams:params];
         
-        if([login objectForKey:@"problem"]){
-            problem = [login objectForKey:@"problem"];
-            problem_title = [login objectForKey:@"problem_title"];
-            if([login objectForKey:@"highlight_element"])
-                highlight_element = [login objectForKey:@"highlight_element"];
-        }else if([login objectForKey:@"id"]){
-            user_id = [login objectForKey:@"id"];
-        }
-        
+        problem = [login objectForKey:@"problem"];
+        problem_title = [login objectForKey:@"problem_title"];
+        highlight_element = [login objectForKey:@"highlight_element"];
+        user_id = [[login objectForKey:@"id"] stringValue];
+    
         dispatch_async(dispatch_get_main_queue(), ^{
             
             [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
@@ -133,8 +129,22 @@
             [_loginButton.buttonText setText:@"Login"];
             [self moveTableView:YES];
             
-            if(user_id!=nil){
+            if([user_id isEqualToString:@"0"]){
                 
+                /* there is an error */
+                UIAlertView* login_problem = [[UIAlertView alloc] initWithTitle:problem_title
+                                                                        message:problem
+                                                                       delegate:self
+                                                              cancelButtonTitle:@"Ok"
+                                                              otherButtonTitles:nil];
+                [login_problem show];
+                if([highlight_element isEqual:@"userstring"])
+                    [_userstringField becomeFirstResponder];
+                if([highlight_element isEqual:@"password"])
+                    [_passwordField becomeFirstResponder];
+                
+            }else{
+             
                 /* update NSUserDefaults */
                 
                 [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"logged_in"];
@@ -144,18 +154,6 @@
                 //[self performSegueWithIdentifier:@"finished_email" sender:self];
                 NSLog(@"id=%@", user_id);
                 
-            }else{
-                /* there is an error */
-                UIAlertView* login_problem = [[UIAlertView alloc] initWithTitle:problem_title
-                                                                      message:problem
-                                                                     delegate:self
-                                                            cancelButtonTitle:@"Ok"
-                                                            otherButtonTitles:nil];
-                [login_problem show];
-                if([highlight_element isEqual:@"userstring"])
-                    [_userstringField becomeFirstResponder];
-                if([highlight_element isEqual:@"password"])
-                    [_passwordField becomeFirstResponder];
             }
             
         });
