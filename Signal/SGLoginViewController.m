@@ -94,9 +94,14 @@
     
     [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
     
+    [self moveTableView:NO];
+    
     /* any error occuring during the login process */
     __block NSString* problem = @"We're not sure what happened, but something went wrong. Try again?";
     __block NSString* problem_title = @"Whoops!";
+    
+    /* element to highlight if there is one */
+    __block NSString* highlight_element = @"userstring";
     
     /* user id returned from API */
     __block NSString* user_id = nil;
@@ -111,6 +116,8 @@
         if([login objectForKey:@"problem"]){
             problem = [login objectForKey:@"problem"];
             problem_title = [login objectForKey:@"problem_title"];
+            if([login objectForKey:@"highlight_element"])
+                highlight_element = [login objectForKey:@"highlight_element"];
         }else if([login objectForKey:@"id"]){
             user_id = [login objectForKey:@"id"];
         }
@@ -124,6 +131,7 @@
             _passwordField.enabled = YES;
             [_loginButton setEnabled:YES];
             [_loginButton.buttonText setText:@"Login"];
+            [self moveTableView:YES];
             
             if(user_id!=nil){
                 
@@ -144,6 +152,10 @@
                                                             cancelButtonTitle:@"Ok"
                                                             otherButtonTitles:nil];
                 [login_problem show];
+                if([highlight_element isEqual:@"userstring"])
+                    [_userstringField becomeFirstResponder];
+                if([highlight_element isEqual:@"password"])
+                    [_passwordField becomeFirstResponder];
             }
             
         });
