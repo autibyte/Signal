@@ -19,4 +19,6 @@
 - (void)saveContext;
 - (NSURL *)applicationDocumentsDirectory;
 
++ (UIColor *)colorFromHexString:(NSString *)hexString;
+
 @end

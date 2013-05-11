@@ -7,7 +7,10 @@
 //
 
 #import "SGLoginViewController.h"
+#import "SGAPI.h"
+
 #define IS_568H ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone && [UIScreen mainScreen].bounds.size.height == 568.0)
+#define SGASYNC dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)
 
 @interface SGLoginViewController ()
 
@@ -32,6 +35,8 @@
         theFrame.size.height -= 40.f;
         _headerView.frame = theFrame;
     }
+    
+    [self checkFilled:self];
     [super viewDidLoad];
 
     // Uncomment the following line to preserve selection between presentations.
@@ -67,6 +72,92 @@
 
 - (void) textFieldDidBeginEditing:(UITextField *)textField {
        [self moveTableView:YES];
+}
+- (BOOL)textFieldShouldReturn:(UITextField *)textField{
+    if(textField == _userstringField){
+        [_passwordField becomeFirstResponder];
+    }else{
+        [self login];
+    }
+    return YES;
+}
+
+-(void)login{
+    
+    /* disable login button */
+    [_loginButton setEnabled:NO];
+    
+    /* disable fields & starting */
+    _userstringField.enabled = NO;
+    _passwordField.enabled = NO;
+    [_loginButton.buttonText setText:@"Logging in..."];
+    
+    [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
+    
+    /* any error occuring during the login process */
+    __block NSString* problem = @"We're not sure what happened, but something went wrong. Try again?";
+    __block NSString* problem_title = @"Whoops!";
+    
+    /* user id returned from API */
+    __block NSString* user_id = nil;
+    
+    dispatch_async(SGASYNC, ^{
+        
+        NSString* userstring = _userstringField.text;
+        NSString* password = _passwordField.text;
+        NSDictionary* params = [NSDictionary dictionaryWithObjectsAndKeys:userstring, @"userstring", password, @"password", nil];
+        NSDictionary* login = [SGAPI call:@"auth" withDictParams:params];
+        
+        if([login objectForKey:@"problem"]){
+            problem = [login objectForKey:@"problem"];
+            problem_title = [login objectForKey:@"problem_title"];
+        }else if([login objectForKey:@"id"]){
+            user_id = [login objectForKey:@"id"];
+        }
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            
+            [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
+            
+            /* re-enable required fields */
+            _userstringField.enabled = YES;
+            _passwordField.enabled = YES;
+            [_loginButton setEnabled:YES];
+            [_loginButton.buttonText setText:@"Login"];
+            
+            if(user_id!=nil){
+                
+                /* update NSUserDefaults */
+                
+                [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"logged_in"];
+                [[NSUserDefaults standardUserDefaults] setObject:user_id forKey:@"id"];
+                
+                /* proceed with segue */
+                //[self performSegueWithIdentifier:@"finished_email" sender:self];
+                NSLog(@"id=%@", user_id);
+                
+            }else{
+                /* there is an error */
+                UIAlertView* login_problem = [[UIAlertView alloc] initWithTitle:problem_title
+                                                                      message:problem
+                                                                     delegate:self
+                                                            cancelButtonTitle:@"Ok"
+                                                            otherButtonTitles:nil];
+                [login_problem show];
+            }
+            
+        });
+    });
+
+}
+
+- (IBAction)checkFilled:(id)sender {
+    if(_userstringField.text.length == 0||_passwordField.text.length == 0){
+        [_loginButton setEnabled:NO];
+    }
+    else{
+        [_loginButton setEnabled:YES];
+    }
 }
 
 #pragma mark - Table view data source
@@ -143,6 +234,9 @@
      // Pass the selected object to the new view controller.
      [self.navigationController pushViewController:detailViewController animated:YES];
      */
+    if(indexPath.row==2&&indexPath.section==0){
+        [self login];
+    }
     [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
