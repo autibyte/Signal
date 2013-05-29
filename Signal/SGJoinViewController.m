@@ -111,16 +111,8 @@
                 [SGAPI showAlertWithMessage:problem andTitle:problem_title];
                 
             }else{
-                
-                /* update NSUserDefaults */
-                
-                [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"logged_in"];
-                [[NSUserDefaults standardUserDefaults] setObject:user_id forKey:@"id"];
-                
-                /* proceed with segue */
-                //[self performSegueWithIdentifier:@"finished_email" sender:self];
-                NSLog(@"id=%@", user_id);
-                
+                [self dismissViewControllerAnimated:YES completion:nil];
+                [self.delegate didJoinWithUserID:user_id];
             }
             
         });
@@ -130,6 +122,7 @@
 
 - (void)viewDidLoad
 {
+    
     UITapGestureRecognizer *gestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hideKeyboard)];
     gestureRecognizer.cancelsTouchesInView = NO;
     [self.tableView addGestureRecognizer:gestureRecognizer];

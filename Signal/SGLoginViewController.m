@@ -35,6 +35,8 @@
         _headerView.frame = theFrame;
     }
     
+    [_userstringField setText:[[NSUserDefaults standardUserDefaults] objectForKey:@"login_userstring"]];
+    
     [self checkFilled:self];
     
     [super viewDidLoad];
@@ -129,8 +131,10 @@
             /* re-enable required fields */
             _userstringField.enabled = YES;
             _passwordField.enabled = YES;
+            [_passwordField setText:@""];
             [_loginButton setEnabled:YES];
             [_loginButton.buttonText setText:@"Login"];
+            [[NSUserDefaults standardUserDefaults] setObject:_userstringField.text forKey:@"login_userstring"];
             
             if([login objectForKey:@"id"]==nil){
                 
@@ -142,21 +146,39 @@
                     [_passwordField becomeFirstResponder];
                 
             }else{
-             
-                /* update NSUserDefaults */
                 
-                [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"logged_in"];
-                [[NSUserDefaults standardUserDefaults] setObject:user_id forKey:@"id"];
-                
-                /* proceed with segue */
-                //[self performSegueWithIdentifier:@"finished_email" sender:self];
-                NSLog(@"id=%@", user_id);
-                
+                [self proceedAfterLoginWithUserID:user_id];
             }
             
         });
     });
 
+}
+
+-(void)proceedAfterLoginWithUserID:(NSString*)user_id{
+    
+    /* update NSUserDefaults */
+    
+    [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"logged_in"];
+    [[NSUserDefaults standardUserDefaults] setObject:user_id forKey:@"id"];
+    
+    /* proceed with segue */
+    [self performSegueWithIdentifier:@"login" sender:self];
+}
+
+- (void) didJoinWithUserID:(NSString*)user_id{
+    if (![self.presentingViewController isBeingDismissed]){
+        [self dismissViewControllerAnimated:YES completion:nil];
+        [self proceedAfterLoginWithUserID:user_id];
+    }
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([[segue identifier] isEqualToString:@"join"]){
+        UINavigationController* nav = segue.destinationViewController;
+        [nav.viewControllers[0] setDelegate:self];
+    }
 }
 
 - (IBAction)checkFilled:(id)sender {

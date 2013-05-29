@@ -9,6 +9,10 @@
 #import <UIKit/UIKit.h>
 #import "SGButtonCell.h"
 
+@protocol SGJoinViewControllerDelegate
+- (void) didJoinWithUserID:(NSString*)user_id;
+@end
+
 @interface SGJoinViewController : UITableViewController <UITextFieldDelegate>
 
 @property (weak, nonatomic) IBOutlet UITextField *fullNameField;
@@ -16,6 +20,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *passwordField;
 @property (weak, nonatomic) IBOutlet UITextField *usernameField;
 @property (weak, nonatomic) IBOutlet SGButtonCell *joinButton;
+@property (weak, nonatomic) id delegate;
 
 -(void)join;
 - (IBAction)cancel:(id)sender;
