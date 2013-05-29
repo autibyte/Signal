@@ -14,5 +14,5 @@
 @property (weak, nonatomic) IBOutlet UITextField *emailAddressField;
 @property (weak, nonatomic) IBOutlet UITextField *passwordField;
 @property (weak, nonatomic) IBOutlet UITextField *tagField;
-
+- (void) hideKeyboard;
 @end

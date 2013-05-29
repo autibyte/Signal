@@ -37,6 +37,7 @@
     }
     
     [self checkFilled:self];
+    
     [super viewDidLoad];
 
     // Uncomment the following line to preserve selection between presentations.
@@ -94,8 +95,6 @@
     
     [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
     
-    [self moveTableView:NO];
-    
     /* any error occuring during the login process */
     __block NSString* problem = @"We're not sure what happened, but something went wrong. Try again?";
     __block NSString* problem_title = @"Whoops!";
@@ -127,7 +126,6 @@
             _passwordField.enabled = YES;
             [_loginButton setEnabled:YES];
             [_loginButton.buttonText setText:@"Login"];
-            [self moveTableView:YES];
             
             if([user_id isEqualToString:@"0"]){
                 
