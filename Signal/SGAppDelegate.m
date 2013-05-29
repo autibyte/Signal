@@ -16,6 +16,17 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    // Check to see if user has logged in already
+    BOOL logged_in = [[NSUserDefaults standardUserDefaults] boolForKey:@"logged_in"];
+    
+    // Load the correct view depending on the logged in state
+    NSString* controller_id = (logged_in) ? @"main_view" : @"login_view";
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Storyboard" bundle:nil];
+    UIViewController *initViewController = [storyboard instantiateViewControllerWithIdentifier:controller_id];
+    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    self.window.rootViewController = initViewController;
+    [self.window makeKeyAndVisible];
+    
     // Set the tint color of the UINavigationBar
     [[UINavigationBar appearance] setTintColor:[SGAppDelegate colorFromHexString:@"#3071BF"]];
     

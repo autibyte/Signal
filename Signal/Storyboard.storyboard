@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="3084" systemVersion="12D78" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="AOX-ge-il1">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="3084" systemVersion="12D78" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="2083"/>
     </dependencies>
@@ -348,7 +348,7 @@
         <!--Table View Controller - Signal-->
         <scene sceneID="war-d5-ihy">
             <objects>
-                <tableViewController id="wfh-7C-Tc1" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="" id="wfh-7C-Tc1" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="UbS-e3-neP">
                         <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -374,7 +374,7 @@
         <!--Navigation Controller-->
         <scene sceneID="NjI-w8-oCC">
             <objects>
-                <navigationController definesPresentationContext="YES" id="VqZ-dM-kEI" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="main_view" definesPresentationContext="YES" id="VqZ-dM-kEI" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" id="LUC-dQ-EAD"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="p7a-8B-wgx">
                         <autoresizingMask key="autoresizingMask"/>
