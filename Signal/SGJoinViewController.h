@@ -7,12 +7,18 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "SGButtonCell.h"
 
-@interface SGJoinViewController : UITableViewController
-- (IBAction)cancel:(id)sender;
+@interface SGJoinViewController : UITableViewController <UITextFieldDelegate>
+
 @property (weak, nonatomic) IBOutlet UITextField *fullNameField;
 @property (weak, nonatomic) IBOutlet UITextField *emailAddressField;
 @property (weak, nonatomic) IBOutlet UITextField *passwordField;
-@property (weak, nonatomic) IBOutlet UITextField *tagField;
+@property (weak, nonatomic) IBOutlet UITextField *usernameField;
+@property (weak, nonatomic) IBOutlet SGButtonCell *joinButton;
+
+-(void)join;
+- (IBAction)cancel:(id)sender;
+- (IBAction)checkFilled:(id)sender;
 - (void) hideKeyboard;
 @end

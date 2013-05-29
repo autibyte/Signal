@@ -10,7 +10,6 @@
 #import "SGAPI.h"
 
 #define IS_568H ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone && [UIScreen mainScreen].bounds.size.height == 568.0)
-#define SGASYNC dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)
 
 @interface SGLoginViewController ()
 
@@ -85,6 +84,12 @@
 
 -(void)login{
     
+    /* API we will use */
+    SGAPI* api = [[SGAPI alloc] init];
+    
+    if(!api.isConnected)
+        return;
+    
     /* disable login button */
     [_loginButton setEnabled:NO];
     
@@ -93,10 +98,8 @@
     _passwordField.enabled = NO;
     [_loginButton.buttonText setText:@"Logging in..."];
     
-    [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
-    
     /* any error occuring during the login process */
-    __block NSString* problem = @"We're not sure what happened, but something went wrong. Try again?";
+    __block NSString* problem = @"Something went wrong when logging in. Try again?";
     __block NSString* problem_title = @"Whoops!";
     
     /* element to highlight if there is one */
@@ -105,21 +108,23 @@
     /* user id returned from API */
     __block NSString* user_id = @"0";
     
-    dispatch_async(SGASYNC, ^{
+    dispatch_async(SGBACKGROUND, ^{
         
         NSString* userstring = _userstringField.text;
         NSString* password = _passwordField.text;
         NSDictionary* params = [NSDictionary dictionaryWithObjectsAndKeys:userstring, @"userstring", password, @"password", nil];
-        NSDictionary* login = [SGAPI call:@"auth" withDictParams:params];
+        NSDictionary* login = [api call:@"auth" withDictParams:params];
         
-        problem = [login objectForKey:@"problem"];
-        problem_title = [login objectForKey:@"problem_title"];
-        highlight_element = [login objectForKey:@"highlight_element"];
-        user_id = [[login objectForKey:@"id"] stringValue];
+        if(login!=nil){
+            problem = [login objectForKey:@"problem"];
+            problem_title = [login objectForKey:@"problem_title"];
+            highlight_element = [login objectForKey:@"highlight_element"];
+            user_id = [[login objectForKey:@"id"] stringValue];
+        }
     
-        dispatch_async(dispatch_get_main_queue(), ^{
+        dispatch_async(SGMAIN, ^{
             
-            [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
+            [api endConnection];
             
             /* re-enable required fields */
             _userstringField.enabled = YES;
@@ -127,15 +132,10 @@
             [_loginButton setEnabled:YES];
             [_loginButton.buttonText setText:@"Login"];
             
-            if([user_id isEqualToString:@"0"]){
+            if([login objectForKey:@"id"]==nil){
                 
                 /* there is an error */
-                UIAlertView* login_problem = [[UIAlertView alloc] initWithTitle:problem_title
-                                                                        message:problem
-                                                                       delegate:self
-                                                              cancelButtonTitle:@"Ok"
-                                                              otherButtonTitles:nil];
-                [login_problem show];
+                [SGAPI showAlertWithMessage:problem andTitle:problem_title];
                 if([highlight_element isEqual:@"userstring"])
                     [_userstringField becomeFirstResponder];
                 if([highlight_element isEqual:@"password"])

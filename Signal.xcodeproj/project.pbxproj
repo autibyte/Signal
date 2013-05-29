@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		148A9477173C89C500601640 /* SGLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 148A9476173C89C500601640 /* SGLoginViewController.m */; };
 		148A947A173D398300601640 /* SGJoinViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 148A9479173D398300601640 /* SGJoinViewController.m */; };
+		1499F6A6175642B00027CB40 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1499F6A5175642B00027CB40 /* SystemConfiguration.framework */; };
+		1499F6A7175645AB0027CB40 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 1499F6A3175642A00027CB40 /* Reachability.m */; };
 		149F6107173C48A1001E74C9 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 149F6106173C48A1001E74C9 /* UIKit.framework */; };
 		149F6109173C48A1001E74C9 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 149F6108173C48A1001E74C9 /* Foundation.framework */; };
 		149F610B173C48A1001E74C9 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 149F610A173C48A1001E74C9 /* CoreGraphics.framework */; };
@@ -32,6 +34,9 @@
 		148A9476173C89C500601640 /* SGLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SGLoginViewController.m; sourceTree = "<group>"; };
 		148A9478173D398300601640 /* SGJoinViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGJoinViewController.h; sourceTree = "<group>"; };
 		148A9479173D398300601640 /* SGJoinViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SGJoinViewController.m; sourceTree = "<group>"; };
+		1499F6A3175642A00027CB40 /* Reachability.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
+		1499F6A4175642A00027CB40 /* Reachability.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
+		1499F6A5175642B00027CB40 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		149F6103173C48A1001E74C9 /* Signal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Signal.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		149F6106173C48A1001E74C9 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		149F6108173C48A1001E74C9 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -61,6 +66,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1499F6A6175642B00027CB40 /* SystemConfiguration.framework in Frameworks */,
 				149F6107173C48A1001E74C9 /* UIKit.framework in Frameworks */,
 				149F6109173C48A1001E74C9 /* Foundation.framework in Frameworks */,
 				149F610B173C48A1001E74C9 /* CoreGraphics.framework in Frameworks */,
@@ -71,6 +77,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1499F6A2175642980027CB40 /* Other Classes */ = {
+			isa = PBXGroup;
+			children = (
+				1499F6A3175642A00027CB40 /* Reachability.m */,
+				1499F6A4175642A00027CB40 /* Reachability.h */,
+			);
+			name = "Other Classes";
+			sourceTree = "<group>";
+		};
 		149F60FA173C48A1001E74C9 = {
 			isa = PBXGroup;
 			children = (
@@ -91,6 +106,7 @@
 		149F6105173C48A1001E74C9 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				1499F6A5175642B00027CB40 /* SystemConfiguration.framework */,
 				149F6106173C48A1001E74C9 /* UIKit.framework */,
 				149F6108173C48A1001E74C9 /* Foundation.framework */,
 				149F610A173C48A1001E74C9 /* CoreGraphics.framework */,
@@ -115,6 +131,7 @@
 		149F610F173C48A1001E74C9 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				1499F6A2175642980027CB40 /* Other Classes */,
 				14C28883173D412D0071F77C /* Custom Classes */,
 				149F6110173C48A1001E74C9 /* Signal-Info.plist */,
 				149F6111173C48A1001E74C9 /* InfoPlist.strings */,
@@ -244,6 +261,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1499F6A7175645AB0027CB40 /* Reachability.m in Sources */,
 				149F6115173C48A1001E74C9 /* main.m in Sources */,
 				149F6119173C48A1001E74C9 /* SGAppDelegate.m in Sources */,
 				149F6122173C48A1001E74C9 /* Signal.xcdatamodeld in Sources */,

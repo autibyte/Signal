@@ -50,7 +50,7 @@
                                             <rect key="frame" x="10" y="1" width="300" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Tag or Email" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="zGi-Xg-tOp">
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Username or Email" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="zGi-Xg-tOp">
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="277" id="1ha-GV-vfg"/>
                                                         <constraint firstAttribute="height" constant="43" id="ZYt-dp-PiD"/>
@@ -77,7 +77,7 @@
                                             <rect key="frame" x="10" y="0.0" width="300" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Aem-R6-6lu">
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="Aem-R6-6lu">
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="277" id="7My-OZ-Odz"/>
                                                         <constraint firstAttribute="height" constant="43" id="e0I-dC-13w"/>
@@ -201,9 +201,9 @@
                                                         <constraint firstAttribute="height" constant="43" id="Gyj-dC-CuH"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="16"/>
-                                                    <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no" returnKeyType="go" enablesReturnKeyAutomatically="YES"/>
+                                                    <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no" returnKeyType="next" enablesReturnKeyAutomatically="YES"/>
                                                     <connections>
-                                                        <outlet property="delegate" destination="AOX-ge-il1" id="rtj-Kr-aKw"/>
+                                                        <outlet property="delegate" destination="N87-tw-r96" id="wSt-zL-fj7"/>
                                                     </connections>
                                                 </textField>
                                             </subviews>
@@ -229,7 +229,8 @@
                                                     <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="16"/>
                                                     <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="emailAddress" returnKeyType="next" enablesReturnKeyAutomatically="YES"/>
                                                     <connections>
-                                                        <outlet property="delegate" destination="AOX-ge-il1" id="0Ro-rr-mxn"/>
+                                                        <action selector="checkFilled:" destination="N87-tw-r96" eventType="editingChanged" id="u3k-Fg-Wfb"/>
+                                                        <outlet property="delegate" destination="N87-tw-r96" id="Bok-mu-19r"/>
                                                     </connections>
                                                 </textField>
                                             </subviews>
@@ -253,9 +254,10 @@
                                                         <constraint firstAttribute="width" constant="277" id="bLa-Oc-0Xo"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="16"/>
-                                                    <textInputTraits key="textInputTraits" autocorrectionType="no" returnKeyType="go" enablesReturnKeyAutomatically="YES" secureTextEntry="YES"/>
+                                                    <textInputTraits key="textInputTraits" autocorrectionType="no" returnKeyType="next" enablesReturnKeyAutomatically="YES" secureTextEntry="YES"/>
                                                     <connections>
-                                                        <outlet property="delegate" destination="AOX-ge-il1" id="168-oy-UUH"/>
+                                                        <action selector="checkFilled:" destination="N87-tw-r96" eventType="editingChanged" id="oFU-D5-DeJ"/>
+                                                        <outlet property="delegate" destination="N87-tw-r96" id="UGh-l4-Lhd"/>
                                                     </connections>
                                                 </textField>
                                             </subviews>
@@ -273,15 +275,16 @@
                                             <rect key="frame" x="10" y="0.0" width="300" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Tag (like a username)" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="aTC-Tl-pK0">
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Username" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="aTC-Tl-pK0">
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="43" id="VNk-9I-v2P"/>
                                                         <constraint firstAttribute="width" constant="277" id="sgs-RO-ePM"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="16"/>
-                                                    <textInputTraits key="textInputTraits" autocorrectionType="no" returnKeyType="next" enablesReturnKeyAutomatically="YES"/>
+                                                    <textInputTraits key="textInputTraits" autocorrectionType="no" returnKeyType="go" enablesReturnKeyAutomatically="YES"/>
                                                     <connections>
-                                                        <outlet property="delegate" destination="AOX-ge-il1" id="L6F-ft-4GH"/>
+                                                        <action selector="checkFilled:" destination="N87-tw-r96" eventType="editingChanged" id="eye-wv-32A"/>
+                                                        <outlet property="delegate" destination="N87-tw-r96" id="jNZ-AK-mXl"/>
                                                     </connections>
                                                 </textField>
                                             </subviews>
@@ -332,8 +335,9 @@
                     <connections>
                         <outlet property="emailAddressField" destination="3w6-wC-U0j" id="785-c6-yYr"/>
                         <outlet property="fullNameField" destination="EfC-lu-CLl" id="FqR-zf-E2L"/>
+                        <outlet property="joinButton" destination="dZU-A0-Jsh" id="isA-9M-Rex"/>
                         <outlet property="passwordField" destination="zM4-bQ-5Rn" id="e07-OB-AwK"/>
-                        <outlet property="tagField" destination="aTC-Tl-pK0" id="sMm-WO-rFm"/>
+                        <outlet property="usernameField" destination="aTC-Tl-pK0" id="wov-8i-7I6"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JTh-QY-HSH" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -373,10 +377,12 @@
             <source key="sourceIdentifier" type="project" relativePath="./Classes/SGJoinViewController.h"/>
             <relationships>
                 <relationship kind="action" name="cancel:"/>
+                <relationship kind="action" name="checkFilled:"/>
                 <relationship kind="outlet" name="emailAddressField" candidateClass="UITextField"/>
                 <relationship kind="outlet" name="fullNameField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="joinButton" candidateClass="SGButtonCell"/>
                 <relationship kind="outlet" name="passwordField" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="tagField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="usernameField" candidateClass="UITextField"/>
             </relationships>
         </class>
         <class className="SGLoginViewController" superclassName="UITableViewController">

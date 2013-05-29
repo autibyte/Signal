@@ -8,8 +8,20 @@
 
 #import <Foundation/Foundation.h>
 
-@interface SGAPI : NSObject
+#define SGBACKGROUND dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)
+#define SGMAIN dispatch_get_main_queue()
 
-+ (id) call:(NSString*) api_name withParams:(NSString*) params;
-+ (id) call:(NSString*) api_name withDictParams:(NSDictionary*) params;
+@interface SGAPI : NSObject{
+    BOOL connected;
+}
+
+- (void) checkInternetConnection;
+- (BOOL) isConnected;
+- (id) call:(NSString*) api_name withParams:(NSString*) params;
+- (id) call:(NSString*) api_name withDictParams:(NSDictionary*) params;
+- (void) endConnection;
+
++ (void) showAlertWithMessage:(NSString*)message;
++ (void) showAlertWithMessage:(NSString *)message andTitle:(NSString*) title;
+
 @end

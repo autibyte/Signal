@@ -7,12 +7,48 @@
 //
 
 #import "SGAPI.h"
+#import "Reachability.h"
 
 #define API_BASE "http://signal.seismic.so/api/"
 
 @implementation SGAPI
 
-+ (id) call:(NSString*) api_name withParams:(NSString*) params{
+- (id) init{
+    connected = YES;
+    [self checkInternetConnection];
+    return self;
+}
+
+- (void) checkInternetConnection{
+    Reachability *reachability = [Reachability reachabilityForInternetConnection];
+    NetworkStatus networkStatus = [reachability currentReachabilityStatus];
+    if(networkStatus == NotReachable){
+        connected = NO;
+        [self.class showAlertWithMessage:@"You're not connected to the Internet!"];
+    }else{
+        [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
+    }
+}
+
+- (BOOL) isConnected{
+    return connected;
+}
+
++ (void) showAlertWithMessage:(NSString *)message{
+    NSString* title = @"Connection Error";
+    [self showAlertWithMessage:message andTitle:title];
+}
+
++ (void) showAlertWithMessage:(NSString *)message andTitle:(NSString*) title{
+    UIAlertView* api_problem = [[UIAlertView alloc] initWithTitle:title
+                                                          message:message
+                                                         delegate:self
+                                                cancelButtonTitle:@"Ok"
+                                                otherButtonTitles:nil];
+    [api_problem show];
+}
+
+- (id) call:(NSString*) api_name withParams:(NSString*) params{
     
     // create the URL request to be sent to the API
     NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%s%@/", API_BASE, api_name]];
@@ -29,13 +65,18 @@
     NSData *responseData = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&requestError];
     NSString *response_string = [[NSString alloc] initWithData:responseData encoding:NSUTF8StringEncoding];
     
-    // return a JSONified object
-    NSData *data = [response_string dataUsingEncoding:NSUTF8StringEncoding];
-    return [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
+    // something went wrong with the returning data
+    if(response_string.length==0 || (![[response_string substringToIndex:1] isEqualToString:@"{"])){
+        return nil;
+    }else{
+        // return a JSONified object
+        NSData *data = [response_string dataUsingEncoding:NSUTF8StringEncoding];
+        return [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
+    }
 }
 
 //  same as normal call: method, but takes a NSMutableDictionary instead of a string
-+ (id) call:(NSString*) api_name withDictParams:(NSDictionary*) params{
+- (id) call:(NSString*) api_name withDictParams:(NSDictionary*) params{
     
     NSMutableString *param_string = [[NSMutableString alloc] init];
     
@@ -53,5 +94,8 @@
     
 }
 
+- (void) endConnection{
+    [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
+}
 
 @end

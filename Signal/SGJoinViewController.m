@@ -7,6 +7,7 @@
 //
 
 #import "SGJoinViewController.h"
+#import "SGAPI.h"
 
 @interface SGJoinViewController ()
 
@@ -23,11 +24,116 @@
     return self;
 }
 
+- (BOOL)textFieldShouldReturn:(UITextField *)textField{
+    
+    if(textField == _fullNameField){
+        [_emailAddressField becomeFirstResponder];
+    }else if(textField == _emailAddressField){
+        [_passwordField becomeFirstResponder];
+    }else if(textField == _passwordField){
+        [_usernameField becomeFirstResponder];
+    }else{
+        [self join];
+    }
+    return YES;
+}
+
+- (IBAction)checkFilled:(id)sender {
+    if(_usernameField.text.length == 0||_passwordField.text.length == 0||_emailAddressField.text.length == 0){
+        [_joinButton setEnabled:NO];
+    }
+    else{
+        [_joinButton setEnabled:YES];
+    }
+}
+
+- (void) join{
+    
+    /* API we will use */
+    SGAPI* api = [[SGAPI alloc] init];
+    
+    if(!api.isConnected)
+        return;
+    
+    /* disable login button */
+    [_joinButton setEnabled:NO];
+    
+    /* disable fields & starting */
+    _fullNameField.enabled = NO;
+    _usernameField.enabled = NO;
+    _emailAddressField.enabled = NO;
+    _passwordField.enabled= NO;
+    [_joinButton.buttonText setText:@"Creating Account..."];
+    
+    /* any error occuring during the join process */
+    __block NSString* problem = @"Something went wrong when trying to create an account. Try again?";
+    __block NSString* problem_title = @"Whoops!";
+    
+    /* user id returned from API */
+    __block NSString* user_id = @"0";
+    
+    dispatch_async(SGBACKGROUND, ^{
+        
+        NSString* full_name = _fullNameField.text;
+        NSString* email = _emailAddressField.text;
+        NSString* password = _passwordField.text;
+        NSString* username = _usernameField.text;
+        
+        NSDictionary* params = [NSDictionary dictionaryWithObjectsAndKeys:
+                                full_name, @"full_name",
+                                email, @"email",
+                                password, @"password",
+                                username, @"username",
+                                nil];
+        NSDictionary* join = [api call:@"join" withDictParams:params];
+        
+        if(join!=nil){
+            problem = [join objectForKey:@"problem"];
+            problem_title = [join objectForKey:@"problem_title"];
+            user_id = [join objectForKey:@"id"];
+        }
+        
+        dispatch_async(SGMAIN, ^{
+            
+            [api endConnection];
+            
+            /* re-enable required fields */
+            _fullNameField.enabled = YES;
+            _usernameField.enabled = YES;
+            _emailAddressField.enabled = YES;
+            _passwordField.enabled= YES;
+            [_joinButton setEnabled:YES];
+            [_joinButton.buttonText setText:@"Create Account"];
+            
+            if([join objectForKey:@"id"]==nil){
+                
+                /* there is an error */
+                [SGAPI showAlertWithMessage:problem andTitle:problem_title];
+                
+            }else{
+                
+                /* update NSUserDefaults */
+                
+                [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"logged_in"];
+                [[NSUserDefaults standardUserDefaults] setObject:user_id forKey:@"id"];
+                
+                /* proceed with segue */
+                //[self performSegueWithIdentifier:@"finished_email" sender:self];
+                NSLog(@"id=%@", user_id);
+                
+            }
+            
+        });
+    });
+
+}
+
 - (void)viewDidLoad
 {
     UITapGestureRecognizer *gestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hideKeyboard)];
     gestureRecognizer.cancelsTouchesInView = NO;
     [self.tableView addGestureRecognizer:gestureRecognizer];
+    [self checkFilled:self];
     [super viewDidLoad];
 
     // Uncomment the following line to preserve selection between presentations.
@@ -126,6 +232,10 @@
      // Pass the selected object to the new view controller.
      [self.navigationController pushViewController:detailViewController animated:YES];
      */
+    if(indexPath.row==4&&indexPath.section==0){
+        [self join];
+    }
+    [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
 - (IBAction)cancel:(id)sender {
