@@ -55,6 +55,10 @@
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
     [request setHTTPMethod:@"POST"];
     
+    // insert the api key from info.plist
+    NSString* api_key = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"SIGNAL_API_KEY"];
+    params = [NSString stringWithFormat:@"%@&api_key=%@", params, api_key];
+    
     // the request string is in param1=val&param2=val2 format
     NSData *requestBody = [params dataUsingEncoding:NSUTF8StringEncoding];
     [request setHTTPBody:requestBody];
