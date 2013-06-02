@@ -345,10 +345,10 @@
             </objects>
             <point key="canvasLocation" x="301" y="424"/>
         </scene>
-        <!--Table View Controller - Signal-->
+        <!--Main View Controller-->
         <scene sceneID="war-d5-ihy">
             <objects>
-                <tableViewController storyboardIdentifier="" id="wfh-7C-Tc1" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="" id="wfh-7C-Tc1" customClass="SGMainViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="singleLineEtched" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="UbS-e3-neP">
                         <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -404,7 +404,7 @@
                             </tableViewSection>
                         </sections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Signal" id="Ldn-wn-X88"/>
+                    <navigationItem key="navigationItem" id="Ldn-wn-X88"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hfU-h2-Nw2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -478,6 +478,9 @@
                 <relationship kind="outlet" name="passwordField" candidateClass="UITextField"/>
                 <relationship kind="outlet" name="userstringField" candidateClass="UITextField"/>
             </relationships>
+        </class>
+        <class className="SGMainViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SGMainViewController.h"/>
         </class>
     </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

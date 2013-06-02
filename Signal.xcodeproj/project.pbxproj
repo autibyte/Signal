@@ -27,6 +27,11 @@
 		149F613D173C828F001E74C9 /* signal-header@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 149F613C173C828F001E74C9 /* signal-header@2x.png */; };
 		14C28886173D41540071F77C /* SGButtonCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 14C28885173D41540071F77C /* SGButtonCell.m */; };
 		14C28889173DEC590071F77C /* SGAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 14C28888173DEC590071F77C /* SGAPI.m */; };
+		14CD54B61757A863009F8F42 /* SGMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 14CD54B51757A863009F8F42 /* SGMainViewController.m */; };
+		14CD54B91757A94D009F8F42 /* signal_logo-small.png in Resources */ = {isa = PBXBuildFile; fileRef = 14CD54B71757A94D009F8F42 /* signal_logo-small.png */; };
+		14CD54BA1757A94D009F8F42 /* signal_logo-small@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 14CD54B81757A94D009F8F42 /* signal_logo-small@2x.png */; };
+		14CD54BD1757A9B3009F8F42 /* signal_logo-white-small.png in Resources */ = {isa = PBXBuildFile; fileRef = 14CD54BB1757A9B3009F8F42 /* signal_logo-white-small.png */; };
+		14CD54BE1757A9B3009F8F42 /* signal_logo-white-small@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 14CD54BC1757A9B3009F8F42 /* signal_logo-white-small@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -59,6 +64,12 @@
 		14C28885173D41540071F77C /* SGButtonCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SGButtonCell.m; sourceTree = "<group>"; };
 		14C28887173DEC590071F77C /* SGAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGAPI.h; sourceTree = "<group>"; };
 		14C28888173DEC590071F77C /* SGAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SGAPI.m; sourceTree = "<group>"; };
+		14CD54B41757A863009F8F42 /* SGMainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGMainViewController.h; sourceTree = "<group>"; };
+		14CD54B51757A863009F8F42 /* SGMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SGMainViewController.m; sourceTree = "<group>"; };
+		14CD54B71757A94D009F8F42 /* signal_logo-small.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "signal_logo-small.png"; sourceTree = "<group>"; };
+		14CD54B81757A94D009F8F42 /* signal_logo-small@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "signal_logo-small@2x.png"; sourceTree = "<group>"; };
+		14CD54BB1757A9B3009F8F42 /* signal_logo-white-small.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "signal_logo-white-small.png"; sourceTree = "<group>"; };
+		14CD54BC1757A9B3009F8F42 /* signal_logo-white-small@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "signal_logo-white-small@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -148,6 +159,8 @@
 				148A9476173C89C500601640 /* SGLoginViewController.m */,
 				148A9478173D398300601640 /* SGJoinViewController.h */,
 				148A9479173D398300601640 /* SGJoinViewController.m */,
+				14CD54B41757A863009F8F42 /* SGMainViewController.h */,
+				14CD54B51757A863009F8F42 /* SGMainViewController.m */,
 			);
 			name = VCs;
 			sourceTree = "<group>";
@@ -165,6 +178,10 @@
 		149F612C173C49D8001E74C9 /* Graphics */ = {
 			isa = PBXGroup;
 			children = (
+				14CD54BB1757A9B3009F8F42 /* signal_logo-white-small.png */,
+				14CD54BC1757A9B3009F8F42 /* signal_logo-white-small@2x.png */,
+				14CD54B71757A94D009F8F42 /* signal_logo-small.png */,
+				14CD54B81757A94D009F8F42 /* signal_logo-small@2x.png */,
 				149F612D173C49E5001E74C9 /* required */,
 				149F6132173C4C24001E74C9 /* Storyboard.storyboard */,
 			);
@@ -251,6 +268,10 @@
 				149F6137173C7C55001E74C9 /* Icon@2x.png in Resources */,
 				149F6139173C7F8A001E74C9 /* Default-568h@2x.png in Resources */,
 				149F613D173C828F001E74C9 /* signal-header@2x.png in Resources */,
+				14CD54B91757A94D009F8F42 /* signal_logo-small.png in Resources */,
+				14CD54BA1757A94D009F8F42 /* signal_logo-small@2x.png in Resources */,
+				14CD54BD1757A9B3009F8F42 /* signal_logo-white-small.png in Resources */,
+				14CD54BE1757A9B3009F8F42 /* signal_logo-white-small@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -269,6 +290,7 @@
 				148A947A173D398300601640 /* SGJoinViewController.m in Sources */,
 				14C28886173D41540071F77C /* SGButtonCell.m in Sources */,
 				14C28889173DEC590071F77C /* SGAPI.m in Sources */,
+				14CD54B61757A863009F8F42 /* SGMainViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

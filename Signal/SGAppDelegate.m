@@ -28,7 +28,7 @@
     [self.window makeKeyAndVisible];
     
     // Set the tint color of the UINavigationBar
-    [[UINavigationBar appearance] setTintColor:[SGAppDelegate colorFromHexString:@"#3071BF"]];
+    [[UINavigationBar appearance] setTintColor:[SGAppDelegate colorFromHexString:@"#eeeeee"]];
     
     // Some nice styling for the UINavigationBar
     [[UINavigationBar appearance] setTitleTextAttributes:
