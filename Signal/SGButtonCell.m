@@ -9,6 +9,9 @@
 #import "SGButtonCell.h"
 #import "SGAppDelegate.h"
 
+#define ENABLED_COLOR [SGAppDelegate mainBlueColor]
+#define DISABLED_COLOR [UIColor lightGrayColor]
+
 @implementation SGButtonCell
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
@@ -23,11 +26,11 @@
 - (void) setEnabled:(BOOL)enabled{
     if(enabled){
         self.userInteractionEnabled = YES;
-        [_buttonText setTextColor:[SGAppDelegate colorFromHexString:@"#004080"]];
+        [self.textLabel setTextColor:ENABLED_COLOR];
     }
     else{
         self.userInteractionEnabled = NO;
-        [_buttonText setTextColor:[UIColor lightGrayColor]];
+        [self.textLabel setTextColor:DISABLED_COLOR];
     }
 }
 

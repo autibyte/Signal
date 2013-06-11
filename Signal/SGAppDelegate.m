@@ -7,6 +7,7 @@
 //
 
 #import "SGAppDelegate.h"
+#import "SGButtonCell.h"
 
 @implementation SGAppDelegate
 
@@ -25,8 +26,10 @@
     UIViewController *initViewController = [storyboard instantiateViewControllerWithIdentifier:controller_id];
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     self.window.rootViewController = initViewController;
+    self.window.tintColor = [self.class mainBlueColor];
+    [[UILabel appearanceWhenContainedIn:[SGButtonCell class] , nil] setTextColor:[self.class mainBlueColor]];
     [self.window makeKeyAndVisible];
-    
+    /*
     // Set the tint color of the UINavigationBar
     [[UINavigationBar appearance] setTintColor:[SGAppDelegate colorFromHexString:@"#eeeeee"]];
     
@@ -41,9 +44,13 @@
       UITextAttributeTextShadowOffset,
       [UIFont fontWithName:@"AvenirNext-DemiBold" size:20.0],
       UITextAttributeFont,
-      nil]];
+      nil]];*/
 
     return YES;
+}
+
++ (UIColor *)mainBlueColor{
+    return [[self class] colorFromHexString:@"#4aa3fa"];
 }
 
 /**

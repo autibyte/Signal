@@ -20,5 +20,6 @@
 - (NSURL *)applicationDocumentsDirectory;
 
 + (UIColor *)colorFromHexString:(NSString *)hexString;
++ (UIColor *)mainBlueColor;
 
 @end

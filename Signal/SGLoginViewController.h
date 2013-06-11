@@ -7,8 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "SGButtonCell.h"
 #import "SGJoinViewController.h"
+#import "SGButtonCell.h"
 
 @interface SGLoginViewController : UITableViewController<UITextFieldDelegate, SGJoinViewControllerDelegate>{
     BOOL view_is_up;
@@ -18,7 +18,8 @@
 @property (weak, nonatomic) IBOutlet UIControl *headerView;
 @property (weak, nonatomic) IBOutlet UITextField *passwordField;
 @property (weak, nonatomic) IBOutlet UITextField *userstringField;
-@property (weak, nonatomic) IBOutlet SGButtonCell *loginButton;
+@property (weak, nonatomic) IBOutlet SGButtonCell *loginButtonCell;
+
 - (IBAction)checkFilled:(id)sender;
 - (IBAction)headerTouched:(id)sender;
 -(void)moveTableView:(BOOL)up;

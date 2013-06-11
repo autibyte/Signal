@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface SGButtonCell : UITableViewCell
-@property (weak, nonatomic) IBOutlet UILabel *buttonText;
+
 -(void) setEnabled:(BOOL) enabled;
+
 @end

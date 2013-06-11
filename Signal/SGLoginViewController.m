@@ -93,12 +93,12 @@
         return;
     
     /* disable login button */
-    [_loginButton setEnabled:NO];
+    [_loginButtonCell setEnabled:NO];
     
     /* disable fields & starting */
     _userstringField.enabled = NO;
     _passwordField.enabled = NO;
-    [_loginButton.buttonText setText:@"Logging in..."];
+    [_loginButtonCell.textLabel setText:@"Logging in..."];
     
     /* any error occuring during the login process */
     __block NSString* problem = @"Something went wrong when logging in. Try again?";
@@ -132,8 +132,8 @@
             _userstringField.enabled = YES;
             _passwordField.enabled = YES;
             [_passwordField setText:@""];
-            [_loginButton setEnabled:YES];
-            [_loginButton.buttonText setText:@"Login"];
+            [_loginButtonCell setEnabled:YES];
+            [_loginButtonCell.textLabel setText:@"Login"];
             [[NSUserDefaults standardUserDefaults] setObject:_userstringField.text forKey:@"login_userstring"];
             
             if([login objectForKey:@"id"]==nil){
@@ -183,10 +183,10 @@
 
 - (IBAction)checkFilled:(id)sender {
     if(_userstringField.text.length == 0||_passwordField.text.length == 0){
-        [_loginButton setEnabled:NO];
+        [_loginButtonCell setEnabled:NO];
     }
     else{
-        [_loginButton setEnabled:YES];
+        [_loginButtonCell setEnabled:YES];
     }
 }
 

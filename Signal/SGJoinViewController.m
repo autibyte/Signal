@@ -63,7 +63,7 @@
     _usernameField.enabled = NO;
     _emailAddressField.enabled = NO;
     _passwordField.enabled= NO;
-    [_joinButton.buttonText setText:@"Creating Account..."];
+    [_joinButton.textLabel setText:@"Creating Account..."];
     
     /* any error occuring during the join process */
     __block NSString* problem = @"Something went wrong when trying to create an account. Try again?";
@@ -103,7 +103,7 @@
             _emailAddressField.enabled = YES;
             _passwordField.enabled= YES;
             [_joinButton setEnabled:YES];
-            [_joinButton.buttonText setText:@"Create Account"];
+            [_joinButton.textLabel setText:@"Create Account"];
             
             if([join objectForKey:@"id"]==nil){
                 
